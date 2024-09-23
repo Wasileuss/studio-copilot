@@ -1,0 +1,165 @@
+.menu {
+    display: flex;
+
+	// .menu__icon
+	&__icon {
+	}
+
+	// .menu__body
+	&__body {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+		@media (max-width: $mobile) {
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+			position: fixed;
+            z-index: 2;
+			width: 100%;
+			height: 100%;
+			right: -100%;
+			top: 0;
+			overflow: auto;
+			padding: toRem(50) toRem(15) toRem(70) toRem(30);
+            gap: toRem(30);
+            background-color: $bgColor;
+			transition: right 0.5s;
+
+			&::before {
+				content: "";
+				position: fixed;
+				width: 100%;
+				height: toRem(70);
+                right: -100%;
+				top: 0;
+				transition: left 0.3s;
+				z-index: 2;
+			}
+			.menu-open & {
+				right: 0;
+				&::before {
+                    left: 0;
+				}
+			}
+		}
+	}
+	// .menu__list
+	&__list {
+        position: relative;
+        display: flex;
+        border: toRem(1) solid $borderColor;
+        border-radius: toRem(30);
+
+        // &::before {
+        //     content: '';
+        //     position: absolute;
+        //     width: 90px;
+        //     height: 100%;
+        //     background-color: $bgColor;
+        //     border-radius: 50px;
+        //     transition: transform 0.3s ease;
+        //     z-index: -1;
+        // }
+
+        @media (max-width: 1075px) {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+		@media (max-width: $mobile) {
+            flex-direction: column;
+            // align-items: center;
+            border: none;
+		}
+	}
+	// .menu__item
+	&__item {
+        position: relative;
+        color: $secondaryColor;
+        transition: all 0.3s ease 0s;
+
+        &--active {
+            color: $lightColor;
+            border-radius: toRem(30);
+            // background-color: $bgColor;
+        }
+	}
+	// .menu__link
+	&__link {
+        padding: toRem(13) toRem(25);
+
+		@media (max-width: $mobile) {
+            font-size: toRem(42);
+            font-family: $fontFamily2;
+            color: $mainColor;
+		}
+	}
+
+    &__highlight {
+
+        @media (min-width: $mobile) {
+            position: absolute;
+            width: toRem(90);
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: $borderColor;
+            border-radius: toRem(30);
+            transition: all 0.5s ease-in-out;
+            z-index: -1;
+        }
+    }
+}
+
+//Burger Icon
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		width: toRem(30);
+		height: toRem(18);
+		z-index: 5;
+		@media (any-hover: none) {
+			cursor: default;
+		}
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: toRem(2);
+			background-color: #000;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - toRem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			// &::before,
+			// &::after {
+			// }
+			&::before {
+				top: calc(50% - toRem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - toRem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}

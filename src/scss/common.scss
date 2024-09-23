@@ -1,0 +1,75 @@
+// Заголовки, загальні БЕМ блоки та інше...
+
+.button {
+
+    svg {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    &--accent {
+        display: flex;
+        align-items: center;
+        gap: toRem(6);
+        padding: toRem(13) toRem(21);
+        background-color: $accentColor;
+        color: #ffffff;
+        border-radius: toRem(30);
+        width: fit-content;
+        margin: 0 auto toRem(51);
+        transition: background-color 0.3s ease-in-out;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: $mainColor;
+            }
+
+            &:hover svg {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.marquee-container {
+    position: relative;
+    width: 100vw;
+    height: 50px; /* Adjust the height as needed */
+    overflow: hidden;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.marquee {
+    display: flex;
+    white-space: nowrap;
+    position: absolute;
+    animation: marquee 10s linear infinite;
+}
+
+.marquee span {
+    margin: 0 20px; /* Spacing between repeated texts */
+    font-size: 24px;
+    color: #333;
+}
+
+#marquee {
+    left: 0;
+}
+
+#marquee-clone {
+    left: 100%; /* Start clone right after the first marquee */
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}

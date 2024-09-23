@@ -1,0 +1,324 @@
+//====================================================================================================
+.footer {
+    background-color: $mainColor;
+    color: $bgColor;
+    width: 100%;
+    border-top-left-radius: toRem(30);
+    border-top-right-radius: toRem(30);
+
+    /* .footer__container */
+
+    &__container {
+        @include adaptiveValue("padding-top", 100, 60, 0, 1440, 360);
+        @include adaptiveValue("padding-bottom", 150, 30, 0, 1440, 360);
+        @include adaptiveValue("padding-left", 50, 15, 0, 1440, 360);
+        @include adaptiveValue("padding-right", 50, 15, 0, 1440, 360);
+    }
+
+    /* .footer__body */
+
+    &__body {
+        width: 100%;
+    }
+
+    /* .footer__title */
+
+    &__title {
+        @include adaptiveValue("font-size", 95, 45, 0, 1440, 360);
+        @include adaptiveValue("margin-bottom", 87, 62, 0, 1440, 360);
+    }
+
+    /* .footer__title-canela */
+
+    &__title-canela {
+        display: block;
+        font-family: $fontFamily2;
+    }
+
+    /* .footer__title-haas */
+
+    &__title-haas {
+        display: block;
+    }
+
+    /* .footer__content */
+
+    &__content {
+        display: flex;
+        margin-bottom: toRem(28);
+        @include adaptiveValue("gap", 250, 50, 0, 1440, 1024);
+
+        @media (max-width: $mobile) {
+            flex-direction: column;
+            gap: toRem(100);
+        }
+    }
+
+    /* .footer__form */
+
+    &__form {
+        display: flex;
+        align-items: flex-start;
+        gap: toRem(54);
+
+        @media (max-width: $mobileSmall) {
+            flex-direction: column;
+            gap: toRem(40);
+        }
+    }
+
+    /* .footer__inputs */
+
+    &__inputs {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* .footer__input */
+
+    &__input {
+        max-width: toRem(428);
+        padding: toRem(10) 0;
+        border-bottom: toRem(1) solid $bgColor;
+        margin-bottom: toRem(42);
+
+        @media (max-width: $mobileSmall) {
+            border-color: $lightColor;
+        }
+
+        &::placeholder {
+            color: $bgColor;
+            font-size: toRem(20);
+            line-height: 1.5;
+
+            @media (max-width: $mobileSmall) {
+                color: $lightColor;
+            }
+        }
+    }
+
+    /* .footer__checkbox */
+
+    &__checkbox {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        flex: 0 0 toRem(20);
+        width: toRem(20);
+        height: toRem(20);
+
+        &:checked ~ .footer__checkmark {
+            background: url('../img/checked.svg') center / 80% no-repeat;
+        }
+    }
+
+    /* .footer__checkmark */
+
+    &__checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background-color: $mainColor;
+        border: toRem(1) solid $bgColor;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    /* .footer__label */
+
+    &__label {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        padding-left: toRem(40);
+        cursor: pointer;
+        user-select: none;
+        gap: toRem(20);
+        max-width: toRem(420);
+        font-size: toRem(20);
+        line-height: 1.25;
+    }
+
+    /* .footer__button */
+
+    &__button {
+        flex-shrink: 0;
+        padding: toRem(13) toRem(21);
+        background-color: $mainColor;
+        color: #ffffff;
+        border-radius: toRem(30);
+        border: toRem(1) solid #ffffff;
+        transition: all 0.3s ease-in-out;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: #ffffff;
+                color: $mainColor;
+            }
+        }
+    }
+
+    /* .footer__info */
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        width: toRem(320);
+        @include adaptiveValue("gap", 84, 30, 0, 1440, 1024);
+    }
+
+    /* .footer__social */
+
+    &__social {
+        display: flex;
+        align-items: center;
+        gap: toRem(55);
+    }
+
+    /* .footer__social-link */
+
+    &__social-link {
+        width: toRem(30);
+        height: toRem(30);
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                transform: scale(1.3);
+            }
+        }
+    }
+
+    /* .footer__menu */
+
+    &__menu {
+    }
+
+    /* .footer__bottom */
+
+    &__bottom {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: toRem(10);
+    }
+
+    /* .footer__privacy */
+
+    &__privacy {
+        display: flex;
+        @include adaptiveValue("gap", 70, 20, 0, 1440, 320);
+    }
+
+    /* .footer__privacy-link */
+
+    &__privacy-link {
+        position: relative;
+        line-height: 1.5;
+        transition: all 0.3s ease-in-out;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: toRem(-2);
+            left: 50%;
+            width: 0;
+            height: toRem(2);
+            background-color: $bgColor;
+            transition: all 0.3s ease 0s;
+        }
+
+        @media (any-hover: hover) {
+            &:hover::after {
+                width: 100%;
+                left: 0;
+            }
+            
+        }
+
+        @media (max-width: $mobileSmall) {
+            color: $lightColor;
+        }
+    }
+
+    /* .footer__logo */
+
+    &__logo {
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        @include adaptiveValue("bottom", 38, -15, 0, 1440, 1024);
+
+        @media (max-width: $mobile) {
+            position: static;
+        }
+    }
+}
+
+.menu-footer {
+
+    @media (max-width: $mobile) {
+        display: none;
+    }
+
+    /* .menu-footer__list */
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        max-height: toRem(105);
+        row-gap: toRem(10);
+        column-gap: toRem(20);
+    }
+
+    /* .menu-footer__item */
+
+    &__item {
+        width: 100%;
+        // max-width: toRem(150);
+        @include adaptiveValue("width", 150, 100, 0, 1440, 1024);
+
+    }
+
+    /* .menu-footer__link */
+
+    &__link {
+        position: relative;
+        font-size: toRem(14);
+        text-transform: uppercase;
+        line-height: 1.25;
+        transition: all 0.3s ease-in-out;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: toRem(-2);
+            left: 50%;
+            width: 0;
+            height: toRem(2);
+            background-color: $bgColor;
+            transition: all 0.3s ease 0s;
+        }
+
+        @media (any-hover: hover) {
+            &:hover::after {
+                width: 100%;
+                left: 0;
+            }
+            
+        }
+    }
+}
+
+//====================================================================================================
